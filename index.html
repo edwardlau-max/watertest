@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOP - Pool Water Sampling and Water Testing (FC & pH)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background-color: #f1f5f9;
+      padding: 24px 16px;
+      margin: 0;
+    }
+    .sop-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 36px 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-top: 6px solid #0284c7;
+    }
+    .header {
+      margin-bottom: 28px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 16px;
+    }
+    h1 {
+      font-size: 24px;
+      color: #0f172a;
+      margin: 0 0 8px 0;
+    }
+    .meta-desc {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0;
+    }
+    .target-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    @media (max-width: 540px) {
+      .target-grid { grid-template-columns: 1fr; }
+    }
+    .target-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .target-box strong { color: #0284c7; font-size: 15px; }
+    .target-box p { margin: 4px 0 0 0; font-size: 13px; color: #475569; }
+
+    h2.section-title {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0369a1;
+      margin: 36px 0 16px 0;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* Video Preview Card */
+    .video-card {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 20px 16px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .video-preview {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #000;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .video-preview:hover {
+      transform: translateY(-2px);
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(220, 38, 38, 0.92);
+      color: #ffffff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .video-preview:hover .play-btn {
+      background: #dc2626;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .video-overlay-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 14px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .video-card-hint {
+      color: #94a3b8;
+      font-size: 12px;
+      margin: 10px 0 0 0;
+    }
+
+    /* Steps Layout */
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .step-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .step-badge {
+      background-color: #0284c7;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-badge.fc { background-color: #0284c7; }
+    .step-badge.ph { background-color: #d97706; }
+    .step-content { flex: 1; }
+    .step-content h3 {
+      font-size: 15px;
+      margin: 0 0 4px 0;
+      color: #0f172a;
+    }
+    .step-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #475569;
+    }
+    .calc-box {
+      background-color: #eff6ff;
+      border: 1px dashed #93c5fd;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #1e40af;
+    }
+    .whatsapp-notice {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* Branch Location Table */
+    table.location-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    table.location-table th, table.location-table td {
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+    }
+    table.location-table th {
+      background-color: #f8fafc;
+      color: #334155;
+      font-weight: 600;
+    }
+    table.location-table tr:nth-child(even) { background-color: #fcfcfd; }
+    
+    /* Designated Sampling Location: Light Red / Pink Tag */
+    .tag {
+      display: inline-block;
+      background: #ffe4e6;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Reminders Box */
+    .reminders-box {
+      margin-top: 32px;
+      padding: 18px;
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+      border-radius: 4px;
+    }
+    .reminders-box h3 {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .reminders-box ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 13px;
+      color: #334155;
+    }
+    .reminders-box li { margin-bottom: 6px; }
+
+    @media print {
+      body { background-color: #ffffff; padding: 0; }
+      .sop-wrapper { box-shadow: none; border-top: none; padding: 0; max-width: 100%; }
+      .video-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sop-wrapper">
+    <div class="header">
+      <h1>Standard Operating Procedure: Pool Water Sampling & Testing</h1>
+      <p class="meta-desc"><strong>Happy Fish Swim School</strong> &bull; Water Quality Monitoring &bull; Rev 4.0</p>
+      
+      <div class="target-grid">
+        <div class="target-box">
+          <strong>Free Chlorine (FC) Target</strong>
+          <p>Normal range: <strong>1.0 – 4.0 ppm</strong> (mg/L)<br><em>Subject to different pools and weekdays or weekends.</em><br>Formula: Total drops of DPD-D &times; 0.2</p>
+        </div>
+        <div class="target-box">
+          <strong>pH Level Target</strong>
+          <p>Normal range: <strong>7.2 – 7.8</strong><br>Optimal range: 7.4 – 7.6</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 1: WATER SAMPLE COLLECTION -->
+    <h2 class="section-title">Part 1: Pool Water Sample Collection</h2>
+    
+    <div class="video-card">
+      <a href="https://youtube.com/shorts/a_06GiP2M0M" target="_blank" rel="noopener noreferrer" class="video-preview" style="background-image: url('https://img.youtube.com/vi/a_06GiP2M0M/hqdefault.jpg');">
+        <div class="play-btn">&#9658;</div>
+        <div class="video-overlay-title">&#9654; Watch: Pool Water Sample Collection</div>
+      </a>
+      <p class="video-card-hint">Click the image above to open and watch the video directly on YouTube.</p>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge">1</div>
+      <div class="step-content">
+        <h3>Rinse and Stir</h3>
+        <p>Go to your branch's designated pool. Submerge and stir the jar 2 to 3 times to rinse the jar and mix the surrounding water. Empty the rinse water away from your sampling area.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge">2</div>
+      <div class="step-content">
+        <h3>Turn Jar Mouth Down</h3>
+        <p>Hold the jar vertical with the open mouth pointing straight down toward the water surface.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge">3</div>
+      <div class="step-content">
+        <h3>Submerge to Elbow Depth</h3>
+        <p>Push the inverted jar straight down into the pool until water reaches your elbow (approx. 30–45 cm). Keeping the opening facing down prevents surface oils and debris from entering.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge">4</div>
+      <div class="step-content">
+        <h3>Turn Upright to Fill</h3>
+        <p>Turn the jar upright while still at elbow depth. Allow all air bubbles to rise out completely so the jar fills with deep, well-mixed water.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge">5</div>
+      <div class="step-content">
+        <h3>Retrieve Sample</h3>
+        <p>Lift the jar smoothly out of the pool. Use this sample immediately for the Free Chlorine and pH tests below.</p>
+      </div>
+    </div>
+
+    <!-- PART 2: FREE CHLORINE (FC) TEST -->
+    <h2 class="section-title">Part 2: Free Chlorine (FC) Testing Procedure</h2>
+
+    <div class="video-card">
+      <a href="https://youtube.com/shorts/Fg_zqmC_gwE" target="_blank" rel="noopener noreferrer" class="video-preview" style="background-image: url('https://img.youtube.com/vi/Fg_zqmC_gwE/hqdefault.jpg');">
+        <div class="play-btn">&#9658;</div>
+        <div class="video-overlay-title">&#9654; Watch: New Test Kit FC Test</div>
+      </a>
+      <p class="video-card-hint">Click the image above to open and watch the video directly on YouTube.</p>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge fc">1</div>
+      <div class="step-content">
+        <h3>Measure Water Sample</h3>
+        <p>Take <strong>20 mL</strong> of the collected water sample.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge fc">2</div>
+      <div class="step-content">
+        <h3>Add DPD-1 & DPD-2</h3>
+        <p>Add <strong>5 drops of DPD-1</strong> and <strong>5 drops of DPD-2</strong> into the water sample. Mix together. The sample water color will turn to pink.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge fc">3</div>
+      <div class="step-content">
+        <h3>Titrate with DPD-D & Stir</h3>
+        <p>Drip <strong>DPD-D</strong> into the sample. After each drop, stir with the spoon. Repeat this step drop by drop until the sample water turns completely transparent. Count the total number of drops used.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge fc">4</div>
+      <div class="step-content">
+        <h3>Calculate Free Chlorine Reading</h3>
+        <p>Each drop of DPD-D represents <strong>0.2 ppm</strong>.</p>
+        <div class="calc-box">
+          <strong>Calculation Formula:</strong> Total Drops &times; 0.2 = Free Chlorine (ppm)<br>
+          <em>Normal Range:</em> <strong>1.0 – 4.0 ppm</strong> (mg/L), subject to different pools and weekdays or weekends.<br>
+          <em>Example:</em> 10 drops &times; 0.2 = <strong>2.0 ppm FC</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge fc">5</div>
+      <div class="step-content">
+        <h3>Report to WhatsApp Group</h3>
+        <p>Record the reading in your branch log sheet and notify the team:</p>
+        <div class="whatsapp-notice">
+          &#128172; Send the Free Chlorine reading to the Pool Maintenance WhatsApp group immediately.
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 3: PH TEST -->
+    <h2 class="section-title">Part 3: pH Testing Procedure</h2>
+
+    <div class="video-card">
+      <a href="https://youtube.com/shorts/lcivUUBSuWM" target="_blank" rel="noopener noreferrer" class="video-preview" style="background-image: url('https://img.youtube.com/vi/lcivUUBSuWM/hqdefault.jpg');">
+        <div class="play-btn">&#9658;</div>
+        <div class="video-overlay-title">&#9654; Watch: New Test Kit pH Test</div>
+      </a>
+      <p class="video-card-hint">Click the image above to open and watch the video directly on YouTube.</p>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge ph">1</div>
+      <div class="step-content">
+        <h3>Fill Water Sample to Black Line</h3>
+        <p>Fill up water sample in the pH compartment until the black line.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge ph">2</div>
+      <div class="step-content">
+        <h3>Add pH Solution (Phenol Red)</h3>
+        <p>Drip <strong>5 drops of pH solution (Phenol Red)</strong> into the compartment.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge ph">3</div>
+      <div class="step-content">
+        <h3>Cap and Invert</h3>
+        <p>Cap the tube and invert several times until the liquid turns a uniform shade ranging from yellow (acidic) to reddish-purple (alkaline).</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge ph">4</div>
+      <div class="step-content">
+        <h3>Compare Color & Record</h3>
+        <p>Compare the color against the pH color scale under natural daylight. Record the value into your daily log (Target: <strong>7.2 – 7.8</strong>).</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge ph">5</div>
+      <div class="step-content">
+        <h3>Report to WhatsApp Group</h3>
+        <p>Record the pH reading in your log and report:</p>
+        <div class="whatsapp-notice">
+          &#128172; Send the pH reading to the Pool Maintenance WhatsApp group immediately.
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 4: BRANCH SAMPLING SPOTS -->
+    <h2 class="section-title">Part 4: Designated Branch Sampling Spots</h2>
+    <table class="location-table">
+      <thead>
+        <tr>
+          <th style="width: 50%;">Branch</th>
+          <th style="width: 50%;">Designated Sampling Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>MK163</td><td><span class="tag">Pool C</span></td></tr>
+        <tr><td>SS23</td><td><span class="tag">Pool B</span></td></tr>
+        <tr><td>Kota Damansara</td><td><span class="tag">Pool C</span></td></tr>
+        <tr><td>Cheras</td><td><span class="tag">Self practice pool</span></td></tr>
+        <tr><td>Elmina</td><td><span class="tag">Self practice pool</span></td></tr>
+        <tr><td>Forum Mall</td><td><span class="tag">Pool A</span></td></tr>
+        <tr><td>Kota Kemuning</td><td><span class="tag">Pool A (Glass panel side)</span></td></tr>
+        <tr><td>KSL Esplanade</td><td><span class="tag">Pool F</span></td></tr>
+        <tr><td>Mount Austin</td><td><span class="tag">Pool B</span></td></tr>
+        <tr><td>Sunway Pyramid</td><td><span class="tag">Pool F</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- KEY REMINDERS -->
+    <div class="reminders-box">
+      <h3>Key Reminders & Rules</h3>
+      <ul>
+        <li><strong>Testing Schedule:</strong> Test twice daily — AM test (~9:00 AM) and PM test (~5:00 PM).</li>
+        <li><strong>Standard Spot:</strong> Always collect from the assigned pool/spot listed above for consistency across all branches.</li>
+        <li><strong>Avoid Inlets & Jets:</strong> Never collect samples directly beside return jets, chemical dosing points, or skimmer boxes.</li>
+        <li><strong>Cleanliness:</strong> Rinse the measuring cylinder and spoon with clean tap water after completing the tests.</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
