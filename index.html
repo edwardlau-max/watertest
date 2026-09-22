@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOP - Pool Water Sampling and Water Testing (FC & pH)</title>
+  <title>SOP - Pool Water Sampling, Testing & Vacuum Robot Operation</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -15,7 +15,7 @@
       margin: 0;
     }
     .sop-wrapper {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
       background: #ffffff;
       padding: 36px 32px;
@@ -162,6 +162,7 @@
     }
     .step-badge.fc { background-color: #0284c7; }
     .step-badge.ph { background-color: #d97706; }
+    .step-badge.vacuum { background-color: #0d9488; }
     .step-content { flex: 1; }
     .step-content h3 {
       font-size: 15px;
@@ -194,6 +195,19 @@
       font-weight: 600;
       font-size: 13px;
       margin-top: 4px;
+    }
+    .important-notice {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #fff1f2;
+      border: 1px solid #fecdd3;
+      color: #be123c;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      margin-top: 6px;
     }
 
     /* Branch Location Table */
@@ -229,18 +243,30 @@
 
     /* Reminders Box */
     .reminders-box {
-      margin-top: 32px;
+      margin-top: 24px;
       padding: 18px;
+      border-radius: 6px;
+    }
+    .reminders-box.water-reminders {
       background-color: #f0f9ff;
       border-left: 4px solid #0284c7;
-      border-radius: 4px;
+    }
+    .reminders-box.vacuum-reminders {
+      background-color: #f0fdfa;
+      border-left: 4px solid #0d9488;
+      margin-top: 28px;
     }
     .reminders-box h3 {
       margin: 0 0 8px 0;
       font-size: 14px;
-      color: #0369a1;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+    }
+    .reminders-box.water-reminders h3 {
+      color: #0369a1;
+    }
+    .reminders-box.vacuum-reminders h3 {
+      color: #0f766e;
     }
     .reminders-box ul {
       margin: 0;
@@ -261,8 +287,8 @@
 
   <div class="sop-wrapper">
     <div class="header">
-      <h1>Standard Operating Procedure: Pool Water Sampling & Testing</h1>
-      <p class="meta-desc"><strong>Happy Fish Swim School</strong> &bull; Water Quality Monitoring &bull; Rev 4.0</p>
+      <h1>Standard Operating Procedure: Pool Water Sampling, Testing & Vacuum Robot Operation</h1>
+      <p class="meta-desc"><strong>Happy Fish Swim School</strong> &bull; Operations & Facility Maintenance &bull; Rev 6.0</p>
       
       <div class="target-grid">
         <div class="target-box">
@@ -463,14 +489,118 @@
       </tbody>
     </table>
 
-    <!-- KEY REMINDERS -->
-    <div class="reminders-box">
-      <h3>Key Reminders & Rules</h3>
+    <!-- KEY REMINDERS PART 1: WATER SAMPLING & TESTING -->
+    <div class="reminders-box water-reminders">
+      <h3>Key Reminders & Rules: Water Sampling & Testing</h3>
       <ul>
         <li><strong>Testing Schedule:</strong> Test twice daily — AM test (~9:00 AM) and PM test (~5:00 PM).</li>
         <li><strong>Standard Spot:</strong> Always collect from the assigned pool/spot listed above for consistency across all branches.</li>
         <li><strong>Avoid Inlets & Jets:</strong> Never collect samples directly beside return jets, chemical dosing points, or skimmer boxes.</li>
-        <li><strong>Cleanliness:</strong> Rinse the measuring cylinder and spoon with clean tap water after completing the tests.</li>
+        <li><strong>Cleanliness:</strong> Rinse the measuring cylinder, spoon, and test cells with clean tap water after completing the tests.</li>
+      </ul>
+    </div>
+
+    <!-- PART 5: ROBOT VACUUM FILTER CLEANING -->
+    <h2 class="section-title">Part 5: Steps of dismantle vacuum filter and wash the filter</h2>
+
+    <div class="video-card">
+      <a href="https://youtube.com/shorts/75Q5JN50g_g" target="_blank" rel="noopener noreferrer" class="video-preview" style="background-image: url('https://img.youtube.com/vi/75Q5JN50g_g/hqdefault.jpg');">
+        <div class="play-btn">&#9658;</div>
+        <div class="video-overlay-title">&#9654; Watch: Robot Vacuum Filter Cleaning (Model: RK-X3)</div>
+      </a>
+      <p class="video-card-hint">Click the image above to open and watch the video directly on YouTube.</p>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">1</div>
+      <div class="step-content">
+        <h3>Collect Robot from Pool</h3>
+        <p>Collect the robot from the pool carefully.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">2</div>
+      <div class="step-content">
+        <h3>Turn Off Immediately</h3>
+        <p>Turn off the robot immediately once taken out of the water.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">3</div>
+      <div class="step-content">
+        <h3>Unlock and Pull Out Filter</h3>
+        <p>Place the robot in a standing position. Rotate the red clip underneath, then press the red clip to pull out the filter unit.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">4</div>
+      <div class="step-content">
+        <h3>Remove Filter Cloth</h3>
+        <p>Pull out the filter cloth from the casing gently.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">5</div>
+      <div class="step-content">
+        <h3>Wash Thoroughly</h3>
+        <p>Wash and rinse the filter cloth and casing thoroughly under clean running water until all dirt and sand are completely removed.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">6</div>
+      <div class="step-content">
+        <h3>Reinstall Filter Cloth</h3>
+        <p>Put back the filter cloth onto the casing step-by-step, making sure it sits flat, neat, and secure.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">7</div>
+      <div class="step-content">
+        <h3>Reinsert Filter to Robot</h3>
+        <p>Put the assembled filter back into the robot until it locks firmly with the clip.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">8</div>
+      <div class="step-content">
+        <h3>Handle with Care</h3>
+        <p>Always handle the robot with care to avoid damage to internal parts or outer casing.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">9</div>
+      <div class="step-content">
+        <h3>Charge Daily After Use</h3>
+        <p>Charge the robot daily after each use so it remains ready for the next cleaning cycle.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-badge vacuum">10</div>
+      <div class="step-content">
+        <h3>Ensure Charging Cap is Tight</h3>
+        <p>Ensure the casing/cap for the charging port is fully tightened before putting the robot into the water.</p>
+        <div class="important-notice">
+          &#9888; Water entering the charging port will permanently damage the robot's battery.
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY REMINDERS PART 2: VACUUM ROBOT -->
+    <div class="reminders-box vacuum-reminders">
+      <h3>Key Reminders & Rules: Vacuum Robot Operation</h3>
+      <ul>
+        <li><strong>Watertight Cap:</strong> Never submerge the robot vacuum if the charging port cap is loose or open. Always verify the seal is tight.</li>
+        <li><strong>Gentle Handling:</strong> Handle the robot with care at all times. Do not drop, bang, or carry the unit by its moving parts.</li>
+        <li><strong>Post-Cleaning Care:</strong> Always wash the filter thoroughly and charge the robot daily after use so it is prepared for the next shift.</li>
       </ul>
     </div>
   </div>
